@@ -1,9 +1,9 @@
 package model;
 
+import model.utils.FileUtils;
 import org.junit.Test;
 
 import java.io.*;
-import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;

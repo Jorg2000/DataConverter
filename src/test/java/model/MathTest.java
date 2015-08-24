@@ -1,5 +1,7 @@
 package model;
 
+import model.utils.*;
+import model.utils.Math;
 import org.junit.Test;
 
 
@@ -19,7 +21,7 @@ public class MathTest {
 
         
         FileUtils fileUtils = new FileUtils();
-        Math math = new Math();
+        model.utils.Math math = new Math();
         List<double[]> expectedDouble = new LinkedList<double[]>();
         List<double[]> actualDouble;
         DecimalFormat df = new DecimalFormat("#.##########");

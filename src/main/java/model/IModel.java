@@ -1,6 +1,8 @@
 package model;
 
+import model.utils.*;
+
 public interface IModel {
     FileUtils getFileUtils();
-    model.Math getMath();
+    model.utils.Math getMath();
 }

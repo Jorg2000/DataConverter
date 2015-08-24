@@ -1,7 +1,7 @@
 package controller;
 
-import model.FileUtils;
-import model.Math;
+import model.utils.FileUtils;
+import model.utils.Math;
 import model.Model;
 
 import java.io.IOException;

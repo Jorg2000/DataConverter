@@ -1,12 +1,15 @@
 package model;
 
+import model.utils.*;
+import model.utils.Math;
+
 public class Model implements IModel {
     private FileUtils fileUtils;
-    private model.Math math;
+    private model.utils.Math math;
 
     public Model() {
         fileUtils = new FileUtils();
-        math = new model.Math();
+        math = new Math();
     }
 
     public FileUtils getFileUtils() {

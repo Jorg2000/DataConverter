@@ -39,16 +39,13 @@ public class MainWindow extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JFileChooser loadFile = new JFileChooser("src/test/resources/");
                 loadFile.showOpenDialog(null);
-
                 String filePathData = loadFile.getSelectedFile().getAbsolutePath();
-
                 voltageData = controller.loadData(filePathData);
                 int rows;
                 int cols;
                 loadedRowsData.setText(String.valueOf(rows = voltageData.size()) + " rows");
                 loadedColumnsData.setText(String.valueOf(cols = voltageData.get(0).length) + " columns");
                 loadedMeasurements.setText(String.valueOf(rows * cols) + " measurements");
-
                 loadedRowsData.setVisible(true);
                 loadedColumnsData.setVisible(true);
                 loadedMeasurements.setVisible(true);

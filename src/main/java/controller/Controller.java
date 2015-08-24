@@ -34,4 +34,8 @@ public class Controller implements IController {
     public List<double[]> convertData(List<double[]> data, List<double[]> coefficients) {
         return math.voltageToAcceleration(data, coefficients);
     }
+
+    public void convertLineByLine(String uriData, String uriCoef) {
+
+    }
 }

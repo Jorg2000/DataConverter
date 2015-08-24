@@ -1,13 +1,12 @@
 package view;
 
 import controller.Controller;
-import model.Model;
 import swing.MainWindow;
 
 
 public class ConverterView implements IConverterView {
 
-    private Controller controller;
+    private final Controller controller;
 
     public ConverterView(Controller c) {
         controller = c;

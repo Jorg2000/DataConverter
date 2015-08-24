@@ -4,8 +4,8 @@ import model.utils.*;
 import model.utils.Math;
 
 public class Model implements IModel {
-    private FileUtils fileUtils;
-    private model.utils.Math math;
+    private final FileUtils fileUtils;
+    private final model.utils.Math math;
 
     public Model() {
         fileUtils = new FileUtils();

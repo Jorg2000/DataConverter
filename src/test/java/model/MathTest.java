@@ -45,7 +45,7 @@ public class MathTest {
 
         StringBuilder expected = new StringBuilder();
         StringBuilder actual = new StringBuilder();
-        StringBuilder test = new StringBuilder();
+
 
         for (double[] doubles : expectedDouble) {
             expected.append("[");
@@ -63,15 +63,15 @@ public class MathTest {
             actual.append("[");
             for (int i = 0; i < doubles.length ; i++) {
                 actual.append(df.format(doubles[i]));
-                test.append(doubles[i]);
+
                 if ( i != doubles.length - 1 ) {
                     actual.append(", ");
-                    test.append(", ");
+
                 }
             }
             actual.append("]");
             actual.append("\n");
-            test.append("\n");
+
         }
 
       assertEquals(expected.toString(), actual.toString());

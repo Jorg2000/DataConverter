@@ -16,7 +16,7 @@ public class MainWindow extends JFrame {
     private JLabel loadedMeasurements;
     private JLabel loadedRowsCoefs;
     private JButton openCoefButton;
-    private Controller controller;
+    private final Controller controller;
     private List<double[]> voltageData;
     private List<double[]> coefsData;
     private List<double[]> accelerationsData;

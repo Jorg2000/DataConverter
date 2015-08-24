@@ -9,8 +9,8 @@ import java.util.List;
 
 
 public class Controller implements IController {
-    private FileUtils fileUtils;
-    private Math math;
+    private final FileUtils fileUtils;
+    private final Math math;
 
     public Controller( Model model) {
         fileUtils  = model.getFileUtils();

@@ -1,4 +1,4 @@
-package model;
+package model.utils;
 
 import model.utils.*;
 import model.utils.Math;

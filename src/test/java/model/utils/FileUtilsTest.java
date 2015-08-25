@@ -1,4 +1,4 @@
-package model;
+package model.utils;
 
 import model.utils.FileUtils;
 import org.junit.Test;

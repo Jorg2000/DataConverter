@@ -22,7 +22,7 @@ public class Controller implements IController {
 
     public List<double[]> loadData(String uri) {
         try {
-            return  fileUtils.readDataFile(uri,"\t",',');
+            return  fileUtils.readDataFile(uri);
         } catch (IOException e) {
             e.printStackTrace();
             return null;
@@ -31,7 +31,7 @@ public class Controller implements IController {
     }
 
     public void writeData(String uri, List<double[]> data) {
-        fileUtils.writeDataFile(data,uri,"\t",',');
+        fileUtils.writeDataFile(data,uri);
     }
 
     public List<double[]> convertData(List<double[]> data, List<double[]> coefficients) {
@@ -39,13 +39,6 @@ public class Controller implements IController {
     }
 
     public void convertLineByLine(String uriInput, String uriCoef, String uriOut) {
-
-        try {
             lineByLineUtils.convertLineByLine(uriInput, uriCoef, uriOut, "\t",',', math) ;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
     }
-
 }

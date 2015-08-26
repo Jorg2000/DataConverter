@@ -7,17 +7,15 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by root on 25.08.2015.
- */
+
 public class LineByLineUtilsTest {
 
     @Test
     public void testConvertLineByLine() throws Exception {
 
-        String dataURI = "src/test/resources/Data.txt";
-        String coefURI = "src/test/resources/Coefficients.txt";
-        String expectedResultURI = "src/test/resources/Result.txt";
+        String dataURI = "src/test/resources/TestData.txt";
+        String coefURI = "src/test/resources/TestCoefficients.txt";
+        String expectedResultURI = "src/test/resources/TestResult.txt";
         String actualResultURI = "src/test/resources/realResult.txt";
 
         List<double[]> actualDoubles;
@@ -27,8 +25,8 @@ public class LineByLineUtilsTest {
         lineByLineUtils.convertLineByLine(dataURI,coefURI,actualResultURI,"\t",',',new Math());
 
         FileUtils fileUtils = new FileUtils();
-        actualDoubles = fileUtils.readDataFile(actualResultURI, "\t",',');
-        expectedDouble = fileUtils.readDataFile(expectedResultURI, "\t",',');
+        actualDoubles = fileUtils.readDataFile(actualResultURI);
+        expectedDouble = fileUtils.readDataFile(expectedResultURI);
         StringBuilder expected = new StringBuilder();
         StringBuilder actual = new StringBuilder();
 

@@ -4,7 +4,7 @@ import controller.Controller;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
+
 
 public class MainWindow extends JFrame {
 
@@ -35,7 +35,8 @@ public class MainWindow extends JFrame {
         loadedMeasurements.setVisible(false);
         openCoefButton.setEnabled(false);
         performConversionButton.setEnabled(false);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
         openDataFileButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JFileChooser loadFile = new JFileChooser("src/test/resources/");
@@ -59,7 +60,7 @@ public class MainWindow extends JFrame {
                 JFileChooser saveFile = new JFileChooser("src/test/resources/");
                 saveFile.showSaveDialog(null);
                 saveFilePath = saveFile.getSelectedFile().getAbsolutePath();
-                if (saveFilePath != null) {
+                if (!saveFilePath.isEmpty()) {
                     controller.convertLineByLine(loadFilePath,coefFilePath,saveFilePath);
                 }
             }

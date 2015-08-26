@@ -12,18 +12,18 @@ import java.util.List;
 
 public class FileUtils {
 
-    public List<double[]> readDataFile(String filePath, String delimiter, char decimalSeparator) throws IOException {
+    public List<double[]> readDataFile(String filePath) throws IOException {
         LinkedList<double[]> dataVoltage = new LinkedList<double[]>();
         /*Configuration of parser of doubles */
         DecimalFormat df = new DecimalFormat();
         DecimalFormatSymbols decimalFormatSymbols = new DecimalFormatSymbols();
-        decimalFormatSymbols.setDecimalSeparator(decimalSeparator);
+        decimalFormatSymbols.setDecimalSeparator(',');
         df.setDecimalFormatSymbols(decimalFormatSymbols);
         File file = new File(filePath);
         BufferedReader br = new BufferedReader(new FileReader(file));
         String line;
         while ((line = br.readLine()) != null) {
-            String[] voltagesString = line.split(delimiter);
+            String[] voltagesString = line.split("\t");
             double[] voltagesDouble = new double[voltagesString.length];
             for (int i = 0; i < voltagesString.length; i++) {
                 try {
@@ -37,7 +37,7 @@ public class FileUtils {
         return dataVoltage;
     }
 
-    public void writeDataFile( List<double[]> data, String filePath, String delimiter, char decimalSeparator) {
+    public void writeDataFile(List<double[]> data, String filePath) {
         StringBuilder result = new StringBuilder();
 
         File file;
@@ -47,7 +47,7 @@ public class FileUtils {
 
         DecimalFormat df = new DecimalFormat("0.0000000000");
         DecimalFormatSymbols decimalFormatSymbols = new DecimalFormatSymbols();
-        decimalFormatSymbols.setDecimalSeparator(decimalSeparator);
+        decimalFormatSymbols.setDecimalSeparator(',');
         df.setRoundingMode(RoundingMode.HALF_UP);
         df.setDecimalFormatSymbols(decimalFormatSymbols);
 
@@ -55,7 +55,7 @@ public class FileUtils {
             for (int i = 0; i < doubles.length ; i++) {
                 result.append(df.format(doubles[i]));
                 if ( i != doubles.length - 1 ) {
-                    result.append(delimiter);
+                    result.append("\t");
                 }
             }
             result.append("\n");

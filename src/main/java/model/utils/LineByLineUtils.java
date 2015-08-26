@@ -10,34 +10,40 @@ public class LineByLineUtils {
 
     public boolean convertLineByLine(String uriInput, String uriCoef, String uriOut,
                                      String delimiter, char decimalSeparator,
-                                     Math m) throws IOException {
-        Math math = m;
-        File input = new File(uriInput);
-        File coef = new File(uriCoef);
-        File out = new File(uriOut);
+                                     Math m)  {
+        try {
 
-        if (out.exists()) {
-            out.delete();
-        }
+            File input = new File(uriInput);
+            File coef = new File(uriCoef);
+            File out = new File(uriOut);
 
-        BufferedReader brInput = new BufferedReader(new FileReader(input));
-        BufferedReader brCoef = new BufferedReader(new FileReader(coef));
-        BufferedWriter bwOut = new BufferedWriter(new FileWriter(out));
+            if (out.exists()) {
+                out.delete();
+            }
+
+            BufferedReader brInput = new BufferedReader(new FileReader(input));
+            BufferedReader brCoef = new BufferedReader(new FileReader(coef));
+            BufferedWriter bwOut = new BufferedWriter(new FileWriter(out));
 
         /*Using number of lines in file with coefficient as reference to the number of lines of the data givens to conversion.
         * in case when lines  in data file are less then lines in coefficient file we break loop of reading */
-        String coefLine;
-        String dataLine;
-        while ((coefLine = brCoef.readLine()) != null) {
-            double currentCoef = parseDoubleString(coefLine,delimiter,decimalSeparator)[0];
-            if ((dataLine = brInput.readLine()) != null) {
-                double[] data = parseDoubleString(dataLine,delimiter,decimalSeparator);
-                double[] result = math.voltageToAccelerationLine(data,currentCoef);
-                bwOut.write(doubleArrToString(result,delimiter,decimalSeparator));
-                bwOut.flush();
+            String coefLine;
+            String dataLine;
+            while ((coefLine = brCoef.readLine()) != null) {
+                double currentCoef = parseDoubleString(coefLine, delimiter, decimalSeparator)[0];
+                if ((dataLine = brInput.readLine()) != null) {
+                    double[] data = parseDoubleString(dataLine, delimiter, decimalSeparator);
+                    double[] result = m.voltageToAccelerationLine(data, currentCoef);
+                    bwOut.write(doubleArrToString(result, delimiter, decimalSeparator));
+                    bwOut.flush();
+                }
             }
+            return true;
         }
-        return true;
+        catch (IOException e) {
+            return false;
+        }
+
     }
 
     /*Parsing string with double numbers*/
